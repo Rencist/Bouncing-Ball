@@ -10,6 +10,7 @@ public class BallPanel extends JPanel implements MouseListener, MouseMotionListe
 	private Ball ball; 
 	private BallArea box; 
 	private Basket basket;
+	private Score score;
 	private int areaWidth;
 	private int areaHeight;
 	public BallPanel(int width, int height) {
@@ -27,8 +28,9 @@ public class BallPanel extends JPanel implements MouseListener, MouseMotionListe
         this.addMouseListener(this);
 		
 		ball = new Ball(x, y, radius, speed, angleInDegree, Color.BLUE);
-		basket = new Basket(320, 240, 25, Color.GREEN);
+		basket = new Basket(320, 240, 15, Color.GREEN);
 		box = new BallArea(0, 0, width, height, Color.WHITE, Color.BLACK);
+		score = new Score();
 		
 		//untuk mendapatkan ukuran area latar belakang jika frame diresize
 		this.addComponentListener(new ComponentAdapter() {
@@ -49,7 +51,7 @@ public class BallPanel extends JPanel implements MouseListener, MouseMotionListe
 		Thread gameThread = new Thread() {
 		public void run() {
 				while (true) {
-					basket.collide(ball);
+					basket.collide(ball, score);
 					ball.collide(box);
 					repaint();
 					try {
@@ -68,6 +70,7 @@ public class BallPanel extends JPanel implements MouseListener, MouseMotionListe
 		box.draw(g);
 		ball.draw(g);
 		basket.draw(g);
+		score.draw(g);
 	}
 
 	@Override

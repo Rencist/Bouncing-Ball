@@ -18,9 +18,10 @@ public class Basket {
 		g.fillOval((int)(x - radius), (int)(y - radius), (int)(2 * radius), (int)(2 * radius));
 	}
 
-    public void collide(Ball ball) {
+    public void collide(Ball ball, Score score) {
         if(ball.x >= x - radius && ball.x <= x + radius && ball.y >= y - radius && ball.y <= y + radius) {
             this.color = Color.BLACK;
+            score.addScore();
         }
 	}
 }
