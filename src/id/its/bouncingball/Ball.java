@@ -48,7 +48,6 @@ public class Ball {
 		else if (x > ballMaxX) {
 			speedX = -speedX;
 			x = ballMaxX;
-			color = Color.GREEN;
 			float r = rand.nextFloat();
 			float g = rand.nextFloat();
 			float b = rand.nextFloat();
