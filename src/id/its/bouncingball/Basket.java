@@ -20,7 +20,6 @@ public class Basket {
 
     public void collide(Ball ball, Score score) {
         if(ball.x >= x - radius && ball.x <= x + radius && ball.y >= y - radius && ball.y <= y + radius) {
-            this.color = Color.BLACK;
             score.addScore();
         }
 	}

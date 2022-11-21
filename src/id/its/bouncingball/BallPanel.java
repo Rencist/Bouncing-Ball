@@ -28,7 +28,7 @@ public class BallPanel extends JPanel implements MouseListener, MouseMotionListe
         this.addMouseListener(this);
 		
 		ball = new Ball(x, y, radius, speed, angleInDegree, Color.BLUE);
-		basket = new Basket(320, 240, 15, Color.GREEN);
+		basket = new Basket(320, 240, 20, Color.BLACK);
 		box = new BallArea(0, 0, width, height, Color.WHITE, Color.BLACK);
 		score = new Score();
 		
@@ -98,8 +98,9 @@ public class BallPanel extends JPanel implements MouseListener, MouseMotionListe
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		ball.speedX = (float)(10);
-		ball.speedY = (float)(-10);
+		Random rand = new Random();
+		ball.speedX = (float)(15 * Math.cos(Math.toRadians(rand.nextInt(180))));
+		ball.speedY = (float)(-15 * (float)Math.sin(Math.toRadians(rand.nextInt(180))));
 		this.repaint();
 	}
 
